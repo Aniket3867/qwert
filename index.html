@@ -18,7 +18,7 @@
 
         body {
             font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #ffb3ba, #ffdfba, #bae1ff, #ffb3de); /* Ice cream-like gradient */
+            background: linear-gradient(120deg, #A7F3D0, #FAD0C4, #D4A5A5);
             color: #fff;
             overflow-x: hidden;
             scroll-behavior: smooth;
@@ -26,16 +26,17 @@
 
         header {
             background: rgba(255, 255, 255, 0.8);
+            color: #333;
             position: sticky;
             top: 0;
             z-index: 10;
             padding: 20px 0;
             text-align: center;
-            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
         }
 
         header h1 {
-            color: #ff6f61; /* Warm coral */
+            color: #F6A5C0;
             font-size: 2.5rem;
             animation: fadeIn 1s ease-in-out;
         }
@@ -45,7 +46,7 @@
         }
 
         header nav a {
-            color: #c5c6c7;
+            color: #6D5D6E;
             text-decoration: none;
             margin: 0 15px;
             font-weight: 500;
@@ -53,7 +54,7 @@
         }
 
         header nav a:hover {
-            color: #ff6f61; /* Warm coral on hover */
+            color: #F6A5C0;
         }
 
         /* 3D Canvas */
@@ -81,7 +82,7 @@
             font-size: 3.5rem;
             margin-bottom: 20px;
             line-height: 1.2;
-            color: #ff6f61;
+            color: #F6A5C0;
         }
 
         .hero-content p {
@@ -93,8 +94,8 @@
         .hero-content .cta {
             display: inline-block;
             padding: 15px 30px;
-            background: #ff6f61; /* Warm coral */
-            color: #1f2833;
+            background: #FAD0C4;
+            color: #3B4A56;
             font-weight: bold;
             text-decoration: none;
             border-radius: 30px;
@@ -102,12 +103,12 @@
         }
 
         .hero-content .cta:hover {
-            background: #ff4b3a; /* Darker coral on hover */
+            background: #FFB7B2;
         }
 
         /* Features Section */
         .features {
-            background: #fff5f5; /* Light pink */
+            background: #FFF1F3;
             padding: 60px 20px;
         }
 
@@ -115,7 +116,7 @@
             text-align: center;
             margin-bottom: 40px;
             font-size: 2.5rem;
-            color: #ff6f61;
+            color: #F6A5C0;
         }
 
         .features-grid {
@@ -127,28 +128,27 @@
         }
 
         .feature {
-            background: #f7e1f2; /* Light lavender */
+            background: #FFF1F3;
             padding: 20px;
             border-radius: 10px;
             text-align: center;
             transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
 
         .feature:hover {
             transform: translateY(-10px);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
         }
 
         .feature h3 {
             font-size: 1.8rem;
             margin-bottom: 10px;
-            color: #ff6f61;
+            color: #F6A5C0;
         }
 
         .feature p {
             font-size: 1rem;
-            color: #333;
+            color: #6D5D6E;
         }
 
         /* Footer */
@@ -157,17 +157,17 @@
             text-align: center;
             padding: 20px 0;
             margin-top: 40px;
-            color: #333;
+            color: #6D5D6E;
         }
 
         footer a {
-            color: #ff6f61;
+            color: #F6A5C0;
             text-decoration: none;
             font-weight: bold;
         }
 
         footer a:hover {
-            color: #ff4b3a; /* Darker coral on hover */
+            color: #FFB7B2;
         }
 
         /* Animations */
@@ -303,7 +303,7 @@
         container.appendChild(renderer.domElement);
 
         const geometry = new THREE.SphereGeometry(1, 32, 32);
-        const material = new THREE.MeshStandardMaterial({ color: 0xff6f61, wireframe: true });
+        const material = new THREE.MeshStandardMaterial({ color: 0xF6A5C0, wireframe: true });
         const sphere = new THREE.Mesh(geometry, material);
         scene.add(sphere);
 
