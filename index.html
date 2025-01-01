@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>NextGenCore AI Token</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.153.0/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.153.0/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #0e1117;
+            color: #fff;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            background: rgba(0, 0, 0, 0.9);
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            transition: background-color 0.3s ease;
+        }
+
+        header h1 {
+            font-size: 2rem;
+            color: #66fcf1;
+            font-weight: 700;
+            transition: color 0.3s ease;
+        }
+
+        header nav a {
+            color: #c5c6c7;
+            text-decoration: none;
+            margin: 0 20px;
+            font-weight: 600;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        header nav a:hover {
+            color: #66fcf1;
+            transform: scale(1.1);
+        }
+
+        #hero {
+            height: 100vh;
+            background: linear-gradient(120deg, #0f2027, #203a43, #2c5364);
+            position: relative;
+            overflow: hidden;
+        }
+
+        #hero canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .hero-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 5;
+            opacity: 0;
+        }
+
+        .hero-content h2 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: #66fcf1;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+
+        .hero-content .cta {
+            display: inline-block;
+            padding: 15px 30px;
+            background: #66fcf1;
+            color: #0e1117;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 30px;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+
+        .hero-content .cta:hover {
+            background: #45a29e;
+            transform: scale(1.1);
+        }
+
+        section {
+            padding: 60px 20px;
+            text-align: center;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .features {
+            background: #1f2833;
+        }
+
+        .features h2 {
+            margin-bottom: 30px;
+            font-size: 2.8rem;
+            color: #66fcf1;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature {
+            background: #0b141a;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .feature h3 {
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+            color: #66fcf1;
+        }
+
+        .feature p {
+            font-size: 1rem;
+            color: #c5c6c7;
+        }
+
+        .tokenomics {
+            background: linear-gradient(120deg, #0f2027, #203a43, #2c5364);
+            color: #fff;
+        }
+
+        .tokenomics h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+        }
+
+        .tokenomics p {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: #c5c6c7;
+        }
+
+        footer {
+            background: #0e1117;
+            padding: 40px 0;
+            text-align: center;
+            color: #c5c6c7;
+        }
+
+        footer a {
+            color: #66fcf1;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        footer a:hover {
+            color: #45a29e;
+        }
+
+        /* Scroll animations */
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>NextGenCore AI</h1>
+        <nav>
+            <a href="#features">Features</a>
+            <a href="#tokenomics">Tokenomics</a>
+            <a href="#footer">Contact</a>
+        </nav>
+    </header>
+
+    <div id="hero">
+        <canvas id="hero-canvas"></canvas>
+        <div class="hero-content">
+            <h2>NextGenCore AI Token</h2>
+            <p>Revolutionizing Blockchain with AI. Join us now!</p>
+            <a href="#features" class="cta">Learn More</a>
+        </div>
+    </div>
+
+    <section class="features" id="features">
+        <h2>Features</h2>
+        <div class="features-grid">
+            <div class="feature">
+                <h3>Secure</h3>
+                <p>Advanced encryption for secure blockchain transactions.</p>
+            </div>
+            <div class="feature">
+                <h3>Decentralized</h3>
+                <p>Fully decentralized platform for global solutions.</p>
+            </div>
+            <div class="feature">
+                <h3>Fast</h3>
+                <p>High-speed transactions with low fees.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="tokenomics" id="tokenomics">
+        <h2>Tokenomics</h2>
+        <p>Our tokenomics are designed to ensure maximum value for all stakeholders. Join us in shaping the future of decentralized finance with AI-powered solutions.</p>
+    </section>
+
+    <footer id="footer">
+        <p>© 2025 NextGenCore AI | All rights reserved</p>
+        <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+    </footer>
+
+    <script>
+        // Particle.js Background Initialization
+        particlesJS('hero', {
+            particles: {
+                number: {
+                    value: 50,
+                    density: {
+                        enable: true,
+                        value_area: 800
+                    }
+                },
+                shape: {
+                    type: "circle",
+                    stroke: {
+                        width: 0,
+                        color: "#fff"
+                    }
+                },
+                opacity: {
+                    value: 0.5,
+                    random: true,
+                    anim: {
+                        enable: true,
+                        speed: 1,
+                        opacity_min: 0.1,
+                        sync: false
+                    }
+                },
+                size: {
+                    value: 3,
+                    random: true,
+                    anim: {
+                        enable: true,
+                        speed: 5,
+                        size_min: 0.1,
+                        sync: false
+                    }
+                },
+                move: {
+                    enable: true,
+                    speed: 1,
+                    direction: "none",
+                    random: true,
+                    straight: false,
+                    out_mode: "out",
+                    bounce: false,
+                    attract: {
+                        enable: false,
+                        rotateX: 600,
+                        rotateY: 1200
+                    }
+                }
+            },
+            interactivity: {
+                detect_on: "canvas",
+                events: {
+                    onhover: {
+                        enable: true,
+                        mode: "repulse"
+                    },
+                    onclick: {
+                        enable: true,
+                        mode: "push"
+                    }
+                }
+            },
+            retina_detect: true
+        });
+
+        // GSAP ScrollTrigger Animations
+        gsap.registerPlugin(ScrollTrigger);
+
+        gsap.from(".hero-content", {
+            opacity: 0,
+            y: -50,
+            duration: 1.5,
+            ease: "power4.out",
+            scrollTrigger: {
+                trigger: "#hero",
+                start: "top bottom",
+                end: "top top",
+                scrub: true
+            }
+        });
+
+        gsap.from(".feature", {
+            opacity: 0,
+            y: 50,
+            stagger: 0.2,
+            duration: 1.5,
+            ease: "power2.out",
+            scrollTrigger: {
+                trigger: ".features",
+                start: "top 80%",
+                end: "bottom top",
+                scrub: true
+            }
+        });
+
+        gsap.from(".tokenomics", {
+            opacity: 0,
+            y: 50,
+            duration: 1.5,
+            ease: "power2.out",
+            scrollTrigger: {
+                trigger: ".tokenomics",
+                start: "top 80%",
+                end: "bottom top",
+                scrub: true
+            }
+        });
+    </script>
+</body>
+</html>
