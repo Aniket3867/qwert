@@ -18,35 +18,23 @@
 
         body {
             font-family: 'Poppins', sans-serif;
-            background: linear-gradient(120deg, #A7F3D0, #FAD0C4, #D4A5A5);
-            color: #fff;
             overflow-x: hidden;
             scroll-behavior: smooth;
         }
 
         header {
-            background: rgba(255, 255, 255, 0.8);
-            color: #333;
+            background: #1f2833;
+            color: #66fcf1;
             position: sticky;
             top: 0;
-            z-index: 10;
+            z-index: 100;
             padding: 20px 0;
             text-align: center;
             box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
         }
 
-        header h1 {
-            color: #F6A5C0;
-            font-size: 2.5rem;
-            animation: fadeIn 1s ease-in-out;
-        }
-
-        header nav {
-            margin-top: 10px;
-        }
-
         header nav a {
-            color: #6D5D6E;
+            color: #c5c6c7;
             text-decoration: none;
             margin: 0 15px;
             font-weight: 500;
@@ -54,72 +42,64 @@
         }
 
         header nav a:hover {
-            color: #F6A5C0;
+            color: #66fcf1;
         }
 
-        /* 3D Canvas */
-        #canvas-container {
+        /* Section Styles */
+        #hero {
             height: 100vh;
-            overflow: hidden;
+            background: linear-gradient(135deg, #66fcf1, #1f2833);
             position: relative;
+            text-align: center;
+            color: #fff;
         }
 
-        canvas {
-            display: block;
-        }
-
-        /* Hero Section */
-        .hero-content {
+        #hero .hero-content {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            text-align: center;
-            z-index: 5;
+            z-index: 2;
         }
 
-        .hero-content h2 {
-            font-size: 3.5rem;
+        #hero .hero-content h2 {
+            font-size: 3rem;
             margin-bottom: 20px;
-            line-height: 1.2;
-            color: #F6A5C0;
         }
 
-        .hero-content p {
+        #hero .hero-content p {
             font-size: 1.5rem;
             margin-bottom: 30px;
-            opacity: 0.9;
         }
 
-        .hero-content .cta {
+        #hero .hero-content .cta {
             display: inline-block;
             padding: 15px 30px;
-            background: #FAD0C4;
-            color: #3B4A56;
+            background: #45a29e;
+            color: #1f2833;
             font-weight: bold;
             text-decoration: none;
             border-radius: 30px;
             transition: background 0.3s ease;
         }
 
-        .hero-content .cta:hover {
-            background: #FFB7B2;
+        #hero .hero-content .cta:hover {
+            background: #66fcf1;
         }
 
-        /* Features Section */
-        .features {
-            background: #FFF1F3;
+        #features {
+            background: linear-gradient(135deg, #f8cdda, #1f2833);
+            color: #fff;
             padding: 60px 20px;
+            text-align: center;
         }
 
-        .features h2 {
-            text-align: center;
+        #features h2 {
             margin-bottom: 40px;
             font-size: 2.5rem;
-            color: #F6A5C0;
         }
 
-        .features-grid {
+        #features .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 20px;
@@ -127,136 +107,82 @@
             margin: 0 auto;
         }
 
-        .feature {
-            background: #FFF1F3;
+        #features .feature {
+            background: #0b141a;
             padding: 20px;
             border-radius: 10px;
-            text-align: center;
             transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
         }
 
-        .feature:hover {
+        #features .feature:hover {
             transform: translateY(-10px);
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
         }
 
-        .feature h3 {
-            font-size: 1.8rem;
+        #features .feature h3 {
             margin-bottom: 10px;
-            color: #F6A5C0;
+            font-size: 1.8rem;
+            color: #66fcf1;
         }
 
-        .feature p {
-            font-size: 1rem;
-            color: #6D5D6E;
+        #features .feature p {
+            color: #c5c6c7;
         }
 
-        /* Footer */
-        footer {
-            background: rgba(255, 255, 255, 0.8);
+        #footer {
+            background: #1f2833;
+            color: #c5c6c7;
             text-align: center;
-            padding: 20px 0;
-            margin-top: 40px;
-            color: #6D5D6E;
+            padding: 20px;
         }
 
-        footer a {
-            color: #F6A5C0;
+        #footer a {
+            color: #66fcf1;
             text-decoration: none;
             font-weight: bold;
         }
 
-        footer a:hover {
-            color: #FFB7B2;
+        #footer a:hover {
+            color: #45a29e;
         }
 
-        /* Animations */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
+        /* 3D Canvas Styles */
+        #canvas-container {
+            height: 100vh;
+            overflow: hidden;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
         }
 
-        /* Media Queries for Responsiveness */
+        canvas {
+            display: block;
+        }
+
+        /* Responsive Design */
         @media (max-width: 768px) {
-            header h1 {
-                font-size: 2rem;
-            }
-
-            .hero-content h2 {
+            #hero .hero-content h2 {
                 font-size: 2.5rem;
             }
 
-            .hero-content p {
-                font-size: 1.2rem;
-            }
-
-            .features h2 {
+            #features h2 {
                 font-size: 2rem;
             }
-
-            .feature h3 {
-                font-size: 1.5rem;
-            }
-
-            .feature p {
-                font-size: 0.9rem;
-            }
         }
-
-        @media (max-width: 480px) {
-            header h1 {
-                font-size: 1.8rem;
-            }
-
-            .hero-content h2 {
-                font-size: 2rem;
-            }
-
-            .hero-content p {
-                font-size: 1rem;
-            }
-
-            .cta {
-                padding: 10px 20px;
-                font-size: 1rem;
-            }
-
-            .features h2 {
-                font-size: 1.8rem;
-            }
-
-            .feature h3 {
-                font-size: 1.3rem;
-            }
-
-            .feature p {
-                font-size: 0.85rem;
-            }
-        }
-
-        @media (max-width: 1024px) {
-            .features-grid {
-                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            }
-        }
-
     </style>
 </head>
 <body>
     <header>
-        <h1>NextGenCore AI Token</h1>
         <nav>
+            <a href="#hero">Home</a>
             <a href="#features">Features</a>
-            <a href="#tokenomics">Tokenomics</a>
             <a href="#footer">Contact</a>
         </nav>
     </header>
 
-    <div id="canvas-container">
+    <div id="hero">
+        <div id="canvas-container"></div>
         <div class="hero-content">
             <h2>NextGenCore AI Token</h2>
             <p>Revolutionizing Blockchain with AI.</p>
@@ -264,7 +190,7 @@
         </div>
     </div>
 
-    <section class="features" id="features">
+    <section id="features">
         <h2>Features</h2>
         <div class="features-grid">
             <div class="feature">
@@ -284,7 +210,6 @@
 
     <footer id="footer">
         <p>© 2025 NextGenCore AI | All rights reserved</p>
-        <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
     </footer>
 
     <script>
@@ -303,7 +228,7 @@
         container.appendChild(renderer.domElement);
 
         const geometry = new THREE.SphereGeometry(1, 32, 32);
-        const material = new THREE.MeshStandardMaterial({ color: 0xF6A5C0, wireframe: true });
+        const material = new THREE.MeshStandardMaterial({ color: 0x66fcf1, wireframe: true });
         const sphere = new THREE.Mesh(geometry, material);
         scene.add(sphere);
 
