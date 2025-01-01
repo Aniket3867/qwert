@@ -18,7 +18,7 @@
 
         body {
             font-family: 'Poppins', sans-serif;
-            background: linear-gradient(120deg, #0f2027, #203a43, #2c5364);
+            background: linear-gradient(135deg, #2c3e50, #4ca1af); /* Blue-to-teal gradient */
             color: #fff;
             overflow-x: hidden;
             scroll-behavior: smooth;
@@ -31,11 +31,11 @@
             z-index: 10;
             padding: 20px 0;
             text-align: center;
-            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.7);
         }
 
         header h1 {
-            color: #66fcf1;
+            color: #ff6f61; /* Warm coral */
             font-size: 2.5rem;
             animation: fadeIn 1s ease-in-out;
         }
@@ -53,7 +53,7 @@
         }
 
         header nav a:hover {
-            color: #66fcf1;
+            color: #ff6f61; /* Warm coral on hover */
         }
 
         /* 3D Canvas */
@@ -81,7 +81,7 @@
             font-size: 3.5rem;
             margin-bottom: 20px;
             line-height: 1.2;
-            color: #66fcf1;
+            color: #ff6f61;
         }
 
         .hero-content p {
@@ -93,7 +93,7 @@
         .hero-content .cta {
             display: inline-block;
             padding: 15px 30px;
-            background: #66fcf1;
+            background: #ff6f61; /* Warm coral */
             color: #1f2833;
             font-weight: bold;
             text-decoration: none;
@@ -102,7 +102,7 @@
         }
 
         .hero-content .cta:hover {
-            background: #45a29e;
+            background: #ff4b3a; /* Darker coral on hover */
         }
 
         /* Features Section */
@@ -115,7 +115,7 @@
             text-align: center;
             margin-bottom: 40px;
             font-size: 2.5rem;
-            color: #66fcf1;
+            color: #ff6f61;
         }
 
         .features-grid {
@@ -127,27 +127,28 @@
         }
 
         .feature {
-            background: #0b141a;
+            background: #34495e;
             padding: 20px;
             border-radius: 10px;
             text-align: center;
             transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
         }
 
         .feature:hover {
             transform: translateY(-10px);
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
         }
 
         .feature h3 {
             font-size: 1.8rem;
             margin-bottom: 10px;
-            color: #66fcf1;
+            color: #ff6f61;
         }
 
         .feature p {
             font-size: 1rem;
-            color: #c5c6c7;
+            color: #ecf0f1;
         }
 
         /* Footer */
@@ -160,13 +161,13 @@
         }
 
         footer a {
-            color: #66fcf1;
+            color: #ff6f61;
             text-decoration: none;
             font-weight: bold;
         }
 
         footer a:hover {
-            color: #45a29e;
+            color: #ff4b3a; /* Darker coral on hover */
         }
 
         /* Animations */
@@ -302,7 +303,7 @@
         container.appendChild(renderer.domElement);
 
         const geometry = new THREE.SphereGeometry(1, 32, 32);
-        const material = new THREE.MeshStandardMaterial({ color: 0x66fcf1, wireframe: true });
+        const material = new THREE.MeshStandardMaterial({ color: 0xff6f61, wireframe: true });
         const sphere = new THREE.Mesh(geometry, material);
         scene.add(sphere);
 
