@@ -6,9 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>NextGenCore AI Token</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.153.0/three.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.153.0/three.min.js"></script>
     <style>
         /* Global Styles */
         * {
@@ -19,27 +18,30 @@
 
         body {
             font-family: 'Poppins', sans-serif;
-            background: #0e1117;
+            background: linear-gradient(120deg, #0f2027, #203a43, #2c5364);
             color: #fff;
             overflow-x: hidden;
             scroll-behavior: smooth;
         }
 
         header {
+            background: rgba(0, 0, 0, 0.8);
             position: sticky;
             top: 0;
             z-index: 10;
-            background: rgba(0, 0, 0, 0.9);
-            padding: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
         }
 
         header h1 {
-            font-size: 1.8rem;
             color: #66fcf1;
+            font-size: 2.5rem;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        header nav {
+            margin-top: 10px;
         }
 
         header nav a {
@@ -47,27 +49,25 @@
             text-decoration: none;
             margin: 0 15px;
             font-weight: 500;
-            transition: color 0.3s ease;
+            transition: color 0.3s ease-in-out;
         }
 
         header nav a:hover {
             color: #66fcf1;
         }
 
-        #hero {
+        /* 3D Canvas */
+        #canvas-container {
             height: 100vh;
-            background: linear-gradient(120deg, #0f2027, #203a43, #2c5364);
+            overflow: hidden;
             position: relative;
         }
 
-        #hero canvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+        canvas {
+            display: block;
         }
 
+        /* Hero Section */
         .hero-content {
             position: absolute;
             top: 50%;
@@ -80,20 +80,21 @@
         .hero-content h2 {
             font-size: 3.5rem;
             margin-bottom: 20px;
+            line-height: 1.2;
             color: #66fcf1;
-            animation: fadeIn 1.5s ease-in-out;
         }
 
         .hero-content p {
-            font-size: 1.2rem;
+            font-size: 1.5rem;
             margin-bottom: 30px;
+            opacity: 0.9;
         }
 
         .hero-content .cta {
             display: inline-block;
             padding: 15px 30px;
             background: #66fcf1;
-            color: #0e1117;
+            color: #1f2833;
             font-weight: bold;
             text-decoration: none;
             border-radius: 30px;
@@ -104,17 +105,15 @@
             background: #45a29e;
         }
 
-        section {
-            padding: 60px 20px;
-            text-align: center;
-        }
-
+        /* Features Section */
         .features {
             background: #1f2833;
+            padding: 60px 20px;
         }
 
         .features h2 {
-            margin-bottom: 20px;
+            text-align: center;
+            margin-bottom: 40px;
             font-size: 2.5rem;
             color: #66fcf1;
         }
@@ -131,7 +130,8 @@
             background: #0b141a;
             padding: 20px;
             border-radius: 10px;
-            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
         }
 
         .feature:hover {
@@ -140,32 +140,22 @@
         }
 
         .feature h3 {
+            font-size: 1.8rem;
             margin-bottom: 10px;
-            font-size: 1.5rem;
             color: #66fcf1;
         }
 
-        .tokenomics {
-            background: linear-gradient(120deg, #0f2027, #203a43, #2c5364);
-            color: #fff;
+        .feature p {
+            font-size: 1rem;
+            color: #c5c6c7;
         }
 
-        .tokenomics h2 {
-            font-size: 2.5rem;
-            margin-bottom: 30px;
-        }
-
-        .tokenomics p {
-            max-width: 800px;
-            margin: 0 auto;
-            font-size: 1.2rem;
-            line-height: 1.5;
-        }
-
+        /* Footer */
         footer {
-            background: #0e1117;
-            padding: 20px 0;
+            background: rgba(0, 0, 0, 0.8);
             text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
             color: #c5c6c7;
         }
 
@@ -178,11 +168,21 @@
         footer a:hover {
             color: #45a29e;
         }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
     </style>
 </head>
 <body>
     <header>
-        <h1>NextGenCore AI</h1>
+        <h1>NextGenCore AI Token</h1>
         <nav>
             <a href="#features">Features</a>
             <a href="#tokenomics">Tokenomics</a>
@@ -190,11 +190,10 @@
         </nav>
     </header>
 
-    <div id="hero">
-        <canvas id="hero-canvas"></canvas>
+    <div id="canvas-container">
         <div class="hero-content">
             <h2>NextGenCore AI Token</h2>
-            <p>Revolutionizing Blockchain with AI. Join us now!</p>
+            <p>Revolutionizing Blockchain with AI.</p>
             <a href="#features" class="cta">Learn More</a>
         </div>
     </div>
@@ -217,46 +216,44 @@
         </div>
     </section>
 
-    <section class="tokenomics" id="tokenomics">
-        <h2>Tokenomics</h2>
-        <p>Our tokenomics are designed to ensure maximum value for all stakeholders. Join us in shaping the future of decentralized finance with AI-powered solutions.</p>
-    </section>
-
     <footer id="footer">
         <p>© 2025 NextGenCore AI | All rights reserved</p>
         <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
     </footer>
 
     <script>
-        // THREE.js Particle Background
-        const canvas = document.getElementById("hero-canvas");
+        // GSAP animation for hero text
+        gsap.from(".hero-content h2", { duration: 1.5, opacity: 0, y: 50, ease: "power4.out" });
+        gsap.from(".hero-content p", { duration: 1.5, opacity: 0, y: 50, delay: 0.5 });
+        gsap.from(".hero-content .cta", { duration: 1.5, opacity: 0, y: 50, delay: 0.7 });
+
+        // THREE.js 3D background animation
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer({ canvas, alpha: true });
+        const renderer = new THREE.WebGLRenderer();
+        const container = document.getElementById("canvas-container");
+
         renderer.setSize(window.innerWidth, window.innerHeight);
+        container.appendChild(renderer.domElement);
 
-        const particles = new THREE.BufferGeometry();
-        const particleCount = 1000;
-        const positions = [];
-        for (let i = 0; i < particleCount; i++) {
-            positions.push((Math.random() - 0.5) * 10);
-            positions.push((Math.random() - 0.5) * 10);
-            positions.push((Math.random() - 0.5) * 10);
-        }
+        const geometry = new THREE.SphereGeometry(1, 32, 32);
+        const material = new THREE.MeshStandardMaterial({ color: 0x66fcf1, wireframe: true });
+        const sphere = new THREE.Mesh(geometry, material);
+        scene.add(sphere);
 
-        particles.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+        const light = new THREE.PointLight(0xffffff, 1, 100);
+        light.position.set(10, 10, 10);
+        scene.add(light);
 
-        const particleMaterial = new THREE.PointsMaterial({ color: 0x66fcf1, size: 0.05 });
-        const particleSystem = new THREE.Points(particles, particleMaterial);
-        scene.add(particleSystem);
-
-        camera.position.z = 5;
+        camera.position.z = 3;
 
         function animate() {
-            particleSystem.rotation.y += 0.002;
-            renderer.render(scene, camera);
             requestAnimationFrame(animate);
+            sphere.rotation.x += 0.01;
+            sphere.rotation.y += 0.01;
+            renderer.render(scene, camera);
         }
+
         animate();
 
         // Responsive resizing
@@ -264,17 +261,6 @@
             camera.aspect = window.innerWidth / window.innerHeight;
             camera.updateProjectionMatrix();
             renderer.setSize(window.innerWidth, window.innerHeight);
-        });
-
-        // GSAP Scroll Animation
-        gsap.registerPlugin(ScrollTrigger);
-
-        gsap.from(".feature", {
-            scrollTrigger: ".features",
-            duration: 1,
-            opacity: 0,
-            y: 50,
-            stagger: 0.2,
         });
     </script>
 </body>
